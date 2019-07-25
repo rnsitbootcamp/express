@@ -37,7 +37,7 @@ router.post('/add',function(req, res, next){
       if(err) return console.log(err);
 
       var users = JSON.parse(data);
-      req.body.id = users.length + 1;
+      req.body.id = users.length ? users[users.length -1].id + 1 : users.length +1;
       users.push(req.body);
 
       fs.writeFile(path.join(
